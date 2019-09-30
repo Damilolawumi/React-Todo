@@ -15,7 +15,8 @@ class TodoForm extends React.Component {
             currentTodo: event.target.value
         })
     }
-    add = () => {
+    add = (event) => {
+        event.preventDefault();
         let todoObject = {
             task: this.state.currentTodo,
             id: Date.now(),
@@ -32,15 +33,16 @@ class TodoForm extends React.Component {
         return (
             <div>
 
-                <input
-                    type='text'
-                    placeholder='add todo here'
-                    value={this.state.currentTodo}
-                    onChange={this.onInputChange}
-                />
-                < button onClick={this.add} >Add Todo</ button>
-                < button >Clear Completed</ button>
-
+                <form onSubmit={this.add}>
+                    <input
+                        type='text'
+                        placeholder='add todo here'
+                        value={this.state.currentTodo}
+                        onChange={this.onInputChange}
+                    />
+                    < button onClick={this.add} >Add Todo</ button>
+                </form>
+                < button onClick={this.props.clearCompletedTodos}>Clear Completed</ button>
             </div>
         )
     }
