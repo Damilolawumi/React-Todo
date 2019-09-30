@@ -1,11 +1,11 @@
 import React from 'react';
 
-class Todo extends React.Component () {
+class Todo extends React.Component {
 
 
     render() {
         return (
-            <div></div>
+            <div>{this.props.todo.task}</div>
         )
     }
 }
